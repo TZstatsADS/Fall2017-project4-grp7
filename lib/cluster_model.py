@@ -1,12 +1,11 @@
-import pandas as pd
 import numpy as np
-import pandas as pd
 
 
 
 
 
-X=np.load("C:/Users/zjutc/Desktop/train.out.npy")
+
+
 
 
 def train_cluster_model(X,k):
@@ -57,7 +56,7 @@ def train_cluster_model(X,k):
     
     log_likelihood=0
     log_likelihood_old=100
-    while np.absolute(log_likelihood-log_likelihood_old)>0.001:
+    while np.absolute(log_likelihood-log_likelihood_old)>0.0001:
         
         # E-step:
         log_likelihood_old=log_likelihood
@@ -65,8 +64,8 @@ def train_cluster_model(X,k):
         for i in range(k):
             A[:,i]=likelihood(X,i,THETA)*c[i]
         log_likelihood=np.sum(np.log(A.sum(axis=1)))
-        print log_likelihood
-        print log_likelihood_old
+        #print log_likelihood
+        #print log_likelihood_old
         ###
         #for row in range(X.shape[0]):
         #    log_likelihood_Xi=0
@@ -94,5 +93,16 @@ def train_cluster_model(X,k):
             THETA[i][:,1]=v2
         
     return [THETA,A,c]
-        
-THETA,A,c=train_cluster_model(X,3)
+
+def main():
+    import os
+    k=3 # set the number of clusters
+    X=np.load("../output/train_matrix.npy")
+    THETA,A,c=train_cluster_model(X,k)
+    filename='cluster_'+str(k)+'_model.npz'
+    base_dir="../output"
+    np.savez(os.path.join(base_dir,filename),THETA=THETA,A=A,c=c)
+
+if __name__=="__main__":        
+    main()
+    
