@@ -21,35 +21,39 @@ def mixture_model_prediction(A,THETA):
     for k in range(len(THETA)): # theta is a matrix for every cluster
         prob_0.append(A[:,k].reshape(m,1).dot(THETA[k][:,0].reshape(1,n)))
     probability_matrix_0=np.sum(prob_0,0)
+    probability_matrix_1=1-probability_matrix_0
     #print probability_matrix_0
     
     prediction_matrix=np.zeros([m,n])
     prediction_matrix[probability_matrix_0<0.5]=1
+    
     #print prediction_matrix
-    return [prediction_matrix,probability_matrix_0]    
+    return [prediction_matrix,probability_matrix_0,probability_matrix_1]    
 
 
 def main():
     mixture_model=np.load("../output/cluster_3_model.npz")
-    train_pd=pd.read_csv("../output/train_matrix.csv",index_col=0)
+    train_pd=pd.read_csv("../output/train1_df.csv",index_col=0)
     
     THETA=mixture_model['THETA']
     A=mixture_model['A'] #assign matrix
-    prediction_matrix,probability_matrix_0=mixture_model_prediction(A,THETA)
+    prediction_matrix,probability_matrix_0,probability_matrix_1=mixture_model_prediction(A,THETA)
     
     # transform numpy matrix to pandas matrix
     prediction_matrix=pd.DataFrame(prediction_matrix)
     prediction_matrix.index=train_pd.index
-    
-    
     prediction_matrix.columns=train_pd.columns
     
     probability_matrix_0=pd.DataFrame(probability_matrix_0)
     probability_matrix_0.index=train_pd.index
     probability_matrix_0.columns=train_pd.columns
     
+    probability_matrix_1=pd.DataFrame(probability_matrix_1)
+    probability_matrix_1.index=train_pd.index
+    probability_matrix_1.columns=train_pd.columns
    
-    prediction_matrix.to_csv("../output/prediction_matrix.csv",header=True,index=True)
-    probability_matrix_0.to_csv("../output/probability_matrix_0.csv",header=True,index=True)
+    prediction_matrix.to_csv("../output/train1_prediction_df.csv",header=True,index=True)
+    probability_matrix_0.to_csv("../output/train1_prob0_df.csv",header=True,index=True)
+    probability_matrix_1.to_csv("../output/train1_prob1_df.csv",header=True,index=True)
 if __name__=="__main__":        
     main()

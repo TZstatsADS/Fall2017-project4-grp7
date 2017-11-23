@@ -98,7 +98,7 @@ def train_cluster_model(X,k):
 def main():
     import os
     k=3 # set the number of clusters
-    X=np.load("../output/train_matrix.npy")
+    X=np.load("../output/train1_matrix.npy")
     THETA,A,c=train_cluster_model(X,k)
     filename='cluster_'+str(k)+'_model.npz'
     base_dir="../output"

@@ -30,8 +30,8 @@ ms_test_np=ms_test_pd.as_matrix()
 #print ms_train_pd.columns
 #print ms_train_np.shape
 
-#np.save('../output/train_matrix',ms_train_np)
-#np.save('../output/test_matrix',ms_test_np)
+np.save('../output/train1_matrix',ms_train_np)
+np.save('../output/test1_matrix',ms_test_np)
 
-#ms_train_pd.to_csv('../output/train_matrix.csv',header=True,index=True)
-#ms_test_pd.to_csv('../output/test_matrix.csv',header=True,index=True)
+ms_train_pd.to_csv('../output/train1_df.csv',header=True,index=True)
+ms_test_pd.to_csv('../output/test1_df.csv',header=True,index=True)
