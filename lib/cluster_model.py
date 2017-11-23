@@ -10,6 +10,7 @@ import numpy as np
 
 def train_cluster_model(X,k):
     m,n=X.shape
+    
     h=np.unique(X)
     """
     use EM algorithm to train multinomial mixture model
