@@ -38,10 +38,12 @@ def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
     for i in np.arange(m):
         user = test_df.index[i] # get the user name
         
-        test_ol = test_df.loc[user,:].sort_values(ascending = False) # test order list
-        predict_ol = predict_df.loc[user,:].sort_values(ascending = False) # predict order list
+        test_ol = test_df.loc[user,:] # test list
+        predict_ol = predict_df.loc[user,:] # predict list
         predict_test_combine = pd.concat([predict_ol ,test_ol], axis = 1)  # join above two list
         predict_test_combine.columns = ['pred_user', 'test_user'] # change columns names
+        predict_test_combine = predict_test_combine.dropna(how='any') # delete NA
+        predict_test_combine = predict_test_combine.sort_values(by = ['pred_user'], ascending = False) # Order by prediction list
         
         for j in np.arange(n):
         
@@ -58,16 +60,6 @@ def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
     
     return R
 
-
-
-#Fake Example 
-test_dic = {'j1': [1,0,1], 'j2':[0,0,0], 'j3':[1,1,0], 'j4':[0,0,1] }
-pre_dic = {'j1': [1,0,1], 'j2':[0,0,1], 'j3':[0,1,0], 'j4':[0,0,1] }
-test_df = pd.DataFrame(test_dic, index = ['u1', 'u2', 'u3'])
-predict_df = pd.DataFrame(pre_dic, index = ['u1', 'u2', 'u3'])
-    
-
-ranked_score(test_df, predict_df, d = 0.5, alpha = 5)
     
     
     
