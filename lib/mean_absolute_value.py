@@ -29,7 +29,7 @@ def mean_absolute_error(test_df, predict_df):
     test_df = test_df.replace(0, np.nan) # replace 0 with na
     test_df = test_df.dropna(axis = [0,1], how = 'all') # delete the rows and columns that are all NAs
     
-    m,n = test_df.shape # m is the number of the test user, and n is the number of 
+    m,_ = test_df.shape # m is the number of the test user
     MAE = 0 # initial mean absolute value
     
     # For each of the user, we need to calculate the absolute difference 

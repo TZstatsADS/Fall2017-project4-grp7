@@ -60,10 +60,14 @@ def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
     
     return R
 
+
+#example
+
+test_df = pd.read_csv('/Users/gongfan/Desktop/test1_df.csv', index_col = 0)
+predict_df = pd.read_csv('/Users/gongfan/Desktop/prediction_df.csv', index_col = 0)
+
     
-    
-    
-    
+
     
     
     
