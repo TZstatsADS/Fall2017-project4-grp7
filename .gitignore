@@ -1,0 +1,7 @@
+*.pyc
+.project
+*.ipynb
+.pydevproject
+.Rhistory
+.ipynb_checkpoints
+__pycache__
