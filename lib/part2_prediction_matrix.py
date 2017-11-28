@@ -28,32 +28,6 @@ def mixture_model_prediction(A,THETA):
     prediction_matrix[probability_matrix_0<0.5]=1
     
     #print prediction_matrix
-    return [prediction_matrix,probability_matrix_0,probability_matrix_1]    
+    return prediction_matrix    
 
 
-def main():
-    mixture_model=np.load("../output/cluster_3_model.npz")
-    train_pd=pd.read_csv("../output/train1_df.csv",index_col=0)
-    
-    THETA=mixture_model['THETA']
-    A=mixture_model['A'] #assign matrix
-    prediction_matrix,probability_matrix_0,probability_matrix_1=mixture_model_prediction(A,THETA)
-    
-    # transform numpy matrix to pandas matrix
-    prediction_matrix=pd.DataFrame(prediction_matrix)
-    prediction_matrix.index=train_pd.index
-    prediction_matrix.columns=train_pd.columns
-    
-    probability_matrix_0=pd.DataFrame(probability_matrix_0)
-    probability_matrix_0.index=train_pd.index
-    probability_matrix_0.columns=train_pd.columns
-    
-    probability_matrix_1=pd.DataFrame(probability_matrix_1)
-    probability_matrix_1.index=train_pd.index
-    probability_matrix_1.columns=train_pd.columns
-   
-    prediction_matrix.to_csv("../output/train1_prediction_df.csv",header=True,index=True)
-    probability_matrix_0.to_csv("../output/train1_prob0_df.csv",header=True,index=True)
-    probability_matrix_1.to_csv("../output/train1_prob1_df.csv",header=True,index=True)
-if __name__=="__main__":        
-    main()

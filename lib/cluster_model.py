@@ -95,6 +95,25 @@ def train_cluster_model(X,k):
         
     return [THETA,A,c]
 
+def select_stable_models(X,k):
+    """
+    
+    This function will train 10 times for each chosen k.
+    It will return the model which performs the best
+    Performance is based on log likelihood
+    
+    """
+    THETA,A,c,log_likelihood=train_cluster_model(X,k)
+    for i in range(10):
+        THETA_temp,A_temp,c_temp,log_likelihood_temp=train_cluster_model(X,k)
+        #print (c_temp)
+        if log_likelihood_temp>log_likelihood:
+            THETA=THETA_temp
+            A=A_temp
+            c=c_temp
+            log_likelihood=log_likelihood_temp
+    return [THETA,A,c,log_likelihood]
+
 def main():
     import os
     k=3 # set the number of clusters
