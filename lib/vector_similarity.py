@@ -45,7 +45,7 @@ def cosineSimi1(train1_df):
     for a, i in itertools.combinations(np.arange(rows),2):
         # a,i are two different users's row index
         
-        if rows % 300 == 0:
+        if a % 300 == 0 and i % 300 == 0:
           time_list.append(datetime.now())
           print("a = "+str(a)+"\tb = "+str(i)+"\n\t"+str((time_list[-1] - time_list[1])))
       
@@ -104,7 +104,7 @@ def cosineSimi2(train2_df):
     for a, i in itertools.combinations(np.arange(rows),2):
         # a,i are two different users's row index
         
-        if rows % 300 == 0:
+        if a % 300 == 0 and i % 300 == 0:
           time_list.append(datetime.now())
           print("a = "+str(a)+"\tb = "+str(i)+"\n\t"+str((time_list[-1] - time_list[1])))
      
