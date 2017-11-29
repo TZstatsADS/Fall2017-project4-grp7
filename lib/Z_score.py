@@ -1,4 +1,4 @@
-def Z_score1(train1,test1,similarity_weights,n = 10):
+def z_score1(train1,test1,similarity_weights,n = 10):
     import numpy as np
     import pandas as pd
     weights_neighbor1 = dict((key,(np.array(similarity_weights.loc[key,:].sort_values(ascending = False).index[1:n+1]),np.array(pearson_corr1.loc[key,:].sort_values(ascending = False)[1:n+1]))) for key in similarity_weights.index)
