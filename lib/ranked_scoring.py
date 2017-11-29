@@ -29,7 +29,7 @@ def ranked_score(test_df, predict_df, d = 0.2, alpha = 5):
     import pandas as pd
     
     
-    m,n = test_df.shape # m is the number of test users, n is the number of items
+    m,_ = test_df.shape # m is the number of test users
     Ra = 0 # initial value for Ra
     Ra_max = 0 # initial value for Ra_max
     
@@ -38,11 +38,13 @@ def ranked_score(test_df, predict_df, d = 0.2, alpha = 5):
     for i in np.arange(m):
         user = test_df.index[i] # get the user name
         
-        test_ol = test_df.loc[user,:] # test list
-        predict_ol = predict_df.loc[user,:] # predict list
-        predict_test_combine = pd.concat([predict_ol ,test_ol], axis = 1)  # join above two list
+        test_ol = test_df.loc[user,:].where(test_df.loc[user,:]!= 0).dropna() # test list
+        predict_ol = predict_df.loc[user,:].where(test_df.loc[user,:]!= 0).dropna()  # predict list
+        
+        n = len(test_ol)
+        
+        predict_test_combine = pd.concat([predict_ol ,test_ol], axis = 1) # join above two list
         predict_test_combine.columns = ['pred_user', 'test_user'] # change columns names
-        predict_test_combine = predict_test_combine.dropna(how='any') # delete NA
         predict_test_combine = predict_test_combine.sort_values(by = ['pred_user'], ascending = False) # Order by prediction list
         
         for j in np.arange(n):
@@ -60,8 +62,6 @@ def ranked_score(test_df, predict_df, d = 0.2, alpha = 5):
     
     return R
 
-    
-    
     
     
 
