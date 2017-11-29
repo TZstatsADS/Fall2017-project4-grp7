@@ -93,7 +93,7 @@ def train_cluster_model(X,k):
             THETA[i][:,0]=v1
             THETA[i][:,1]=v2
         
-    return [THETA,A,c]
+    return [THETA,A,c,log_likelihood]
 
 def select_stable_models(X,k):
     """

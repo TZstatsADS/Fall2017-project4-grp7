@@ -3,6 +3,7 @@ similarity_weights:weights_neighbor
 n:neighbors
 """
 
+"""
 def Deviation_for_mean1(train1,test1,similarity_weights,n):
 
     import numpy as np
@@ -20,6 +21,32 @@ def Deviation_for_mean1(train1,test1,similarity_weights,n):
             r_u_i = np.array(train1.loc[index_a_u[a],i])
             p_a_i.loc[test1.index[a],i] = r_a_mean[a] + (r_u_i- r_u_mean[a]).dot(w_a_u[a])/w_a_u[a].sum()
     return  p_a_i
+"""
+def Deviation_for_mean1(train,test,weights_neighbor,neighbors):
+    row_index=train.index
+    col_index=train.columns
+    train=train.values #transfer to numpy
+    m=len(train) # number of all users
+    num_neighbors=weights_neighbor.shape[1] # number of neighbors we select
+    prediction=[]
+    for user,neighbor,weight_neighbor in zip(train,neighbors,weights_neighbor):
+        neighbors_rating=train[neighbor]
+        neighbors_mean=np.mean(neighbors_rating,axis=1)
+        neighbors_rating=neighbors_rating-np.mean(neighbors_rating,axis=1).reshape(num_neighbors,1)
+        
+        nominator=np.sum(neighbors_rating*weight_neighbor.reshape(num_neighbors,1),axis=0)
+        denominator=np.sum(weight_neighbor)
+        
+        user_result=np.array(nominator)/denominator+np.mean(user)
+        prediction.append(user_result)
+    prediction=np.array(prediction)
+    
+    # transfer to pandas:
+    prediction=pd.DataFrame(prediction)
+    prediction.index=row_index
+    prediction.columns=col_index
+    
+    return prediction.loc[test.index,test.columns]
 
 def Deviation_for_mean2(data_train,data_test,weights_neighbor,neighbors):
     user = data_test['User']
