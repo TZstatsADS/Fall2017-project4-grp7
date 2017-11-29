@@ -35,14 +35,17 @@ def mean_absolute_error(test_df, predict_df):
     # For each of the user, we need to calculate the absolute difference 
     for i in np.arange(m):
         
+        
         user = test_df.index[i] # user name
         item = test_df.loc[user, :].dropna() # item list 
-        item_name = item.index # voted item name
+        item_name = item.index.astype(int) # voted item name
         
         predict_item = predict_df.loc[user, list(item_name)] # predict voted value
         
-        MAE = MAE + np.abs(predict_item - item).sum()/len(item) # calculate the sum of MAE
+        if predict_item.isnull().values.any():
+            predict_item = predict_item.replace(np.nan, 2.5)
         
+        MAE = MAE + np.abs(predict_item.values - item.values).mean() # calculate the sum of MAE
     
     MAE = MAE/m # Calculate the mean of absolute value
         

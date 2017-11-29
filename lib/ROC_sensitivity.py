@@ -43,7 +43,7 @@ def roc_sensitivity(test_df, predict_df, goodness = 4):
         
         user = test_df.index[i] # user name
         item = test_df.loc[user, :].dropna() # item list 
-        item_name = item.index # voted item name
+        item_name = item.index.astype(int) # voted item name
         
         predict_item = predict_df.loc[user, list(item_name)] # predict voted value
         
@@ -58,7 +58,7 @@ def roc_sensitivity(test_df, predict_df, goodness = 4):
         
         for j in np.arange(len(item)):
             item_j = item[j]
-            predict_item_j = predict_item[j]
+            predict_item_j = predict_item.values[j]
             
             if item_j == 'good' and predict_item_j == 'good':
                 num_actual_good += 1
