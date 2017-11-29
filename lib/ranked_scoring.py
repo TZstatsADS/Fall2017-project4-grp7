@@ -7,7 +7,7 @@ Created on Thu Nov 23 11:37:08 2017
 """
 
 # Function to calculate the prediction ranked scoring
-def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
+def ranked_score(test_df, predict_df, d = 0.2, alpha = 5):
     '''
     This function aims to calculate the ranked scoring of our prediction by using
     implicit voting data
@@ -48,7 +48,7 @@ def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
         for j in np.arange(n):
         
             # Calculate Ra for each of the item for this user
-            Ra_j = max(predict_test_combine.iloc[j,1] - d, 0)/2 ** (j/(alpha - 1)) # j start from 0
+            Ra_j = max(predict_test_combine.iloc[j,0] - d, 0)/2 ** (j/(alpha - 1)) # j start from 0
             Ra = Ra + Ra_j
             
             # Calculate Ra_max for each of the item for this user
@@ -60,10 +60,6 @@ def ranked_score(test_df, predict_df, d = 0.5, alpha = 5):
     
     return R
 
-    
-
-    
-    
     
     
     
