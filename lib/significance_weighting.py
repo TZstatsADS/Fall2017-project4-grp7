@@ -47,7 +47,7 @@ def significance_weighting(data,correlation):
              else:
                  sig_weight[i,j] = co_rated[i,j]/50
     devalued_weight=correlation*sig_weight
-    return [sig_weight,devalued_weight]
+    return devalued_weight
 
 
  

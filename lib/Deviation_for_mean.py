@@ -1,5 +1,9 @@
+"""
+similarity_weights:weights_neighbor
+n:neighbors
+"""
 
-def Deviation_for_mean1(train1,test1, n = 10，similarity_weights):
+def Deviation_for_mean1(train1,test1,similarity_weights,n):
 
     import numpy as np
     import pandas as pd

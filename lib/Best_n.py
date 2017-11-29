@@ -40,8 +40,7 @@ def selecting_neighborhood(n, similarity_weights,data):
         weights_neighbor[a,:] = arr[np.argsort(arr)[-n:]]
         neighbors[a,:] = arr.argsort()[-n:][::-1]
     neighbors = neighbors.astype(int)
-    return weights_neighbor, neighbors
-
+    return [weights_neighbor, neighbors]
 
 
 
