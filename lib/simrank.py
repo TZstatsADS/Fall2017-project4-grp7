@@ -1,4 +1,4 @@
-def simrank(dense_mat, maxIteration = 30,C1 = 0.8):
+def simrank(dense_mat, maxIteration = 30, C1 = 0.8):
     '''
     Parameter
     ---------
