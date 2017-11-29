@@ -4,6 +4,8 @@
 .pydevproject
 .Rhistory
 .ipynb_checkpoints
+pearson_correlation1.pkl
+
 __pycache__
 
 !main.ipynb

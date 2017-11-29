@@ -31,6 +31,7 @@ def main():
     weights_neighbor2, neighbors2 = selecting_neighborhood(20, pearson_corr2, train2)
 ##########################Best-n estimator
 def selecting_neighborhood(n, similarity_weights,data):
+    similarity_weights=similarity_weights.values
     data=data.values
     n_users = data.shape[0]
     weights_neighbor = np.zeros((n_users, n))
