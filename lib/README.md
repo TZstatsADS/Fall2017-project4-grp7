@@ -18,7 +18,7 @@ ranked_scoring calculates the prediction ranked scoring
 
 significant_weighting is performed on pearson correlation
 
-simrank uses matrix representation in the paper 3
+`simrank` uses matrix representation in the paper 3
 
 mean_absolute_error the a performance measurement method for data 2
 
