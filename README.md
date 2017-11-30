@@ -17,8 +17,12 @@ Term: Fall 2017
 ![1](figs/1.jpg)
 ![2](figs/2.jpg)
 
-For this project, we studied and implemented the memory-based algorithms and model-based algorithms from the Collaborative filtering literature on two data sets. Data set one is implicit voting and data set two is explicit voting. The prediction for both data sets is carried out by two methods, Deviation for Mean and Z_Score. For the first data set, we used Ranked Scoring for evaluation. And for the second data set, we used Mean Absolute Error and ROC Sensitivity for evaluation.
- 
+For this project, we studied and implemented the memory-based algorithms and model-based algorithms from the Collaborative filtering literature on two data sets. 
+
+Data set one is implicit voting and data set two is explicit voting. The prediction for both data sets is carried out by two methods, Deviation for Mean and Z_Score. For the first data set, we used Ranked Scoring for evaluation. And for the second data set, we used Mean Absolute Error and ROC Sensitivity for evaluation.
+
++ Part of the Result:
+![3](figs/3.jpg)
 	
 **Contribution statement**: All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
