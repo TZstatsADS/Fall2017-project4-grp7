@@ -5,14 +5,16 @@
 Term: Fall 2017
 
 + Team #
-+ Projec title: Lorem ipsum dolor sit amet
++ Projec title: Collaborative Filtering Algorithms - Evaluation and Comparison
 + Team members
-	+ team member 1
-	+ team member 2
-	+ team member 3
-	+ team member 4
-	+ team member 5
-+ Project summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	+ Pinren Chen (presenter)
+	+ Fan Gong
+	+ Yingbin Jiang
+	+ Siyi Wang
+	+ Xinhu Wang
++ Project summary: 
+For this project, we studied and implemented the memory-based algorithms and model-based algorithms from the Collaborative filtering literature on two data sets. Data set one is implicit voting and data set two is explicit voting. The prediction for both data sets is carried out by two methods, Deviation for mean and Z_score. For the first data set, we used ranked scoring for evaluation. And for the second data set, we used Mean Absolute Error and ROC sensitivity for evaluation.
+ 
 	
 **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
