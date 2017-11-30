@@ -4,3 +4,6 @@
 
 The lib directory contains various files with function definitions (but only function definitions - no code that actually runs).
 This part contains number of functions,
+
+roc sensitivity function aims to calculate the ROC sensitivity of our prediction
+
